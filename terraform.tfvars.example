@@ -1,0 +1,12 @@
+aws_region          = "us-east-1"
+environment         = "prd"
+vpc_id              = "vpc-0123456789abcdef0"
+database_subnet_ids = [
+  "subnet-0123456789abcdef1",
+  "subnet-0123456789abcdef2"
+]
+work_order_db_name  = "work_order_db"
+billing_db_name     = "billing_db"
+exec_db_name        = "exec_db"
+db_instance_class   = "db.t4g.micro"
+documentdb_instance_class = "db.t4g.medium"
