@@ -38,15 +38,16 @@ resource "aws_security_group" "docdb" {
 }
 
 resource "aws_docdb_cluster" "this" {
-  cluster_identifier      = var.cluster_identifier
-  engine                  = "docdb"
-  master_username         = "docdbadmin"
-  master_password         = random_password.master_password.result
-  db_subnet_group_name    = aws_docdb_subnet_group.this.name
-  vpc_security_group_ids  = [aws_security_group.docdb.id]
-  skip_final_snapshot     = true
-  deletion_protection     = false
-  storage_encrypted       = true
+  cluster_identifier     = var.cluster_identifier
+  engine                 = "docdb"
+  master_username        = "docdbadmin"
+  master_password        = random_password.master_password.result
+  db_subnet_group_name   = aws_docdb_subnet_group.this.name
+  vpc_security_group_ids = [aws_security_group.docdb.id]
+  skip_final_snapshot    = true
+  deletion_protection    = false
+  apply_immediately      = true
+  storage_encrypted      = var.storage_encrypted
 
   tags = {
     Name = var.cluster_identifier
