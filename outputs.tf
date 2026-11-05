@@ -28,6 +28,22 @@ output "exec_docdb_secret_arn" {
   value       = var.enable_documentdb && length(module.exec_db) > 0 ? module.exec_db[0].secret_arn : null
 }
 
+output "exec_mongodb_endpoint" {
+  description = "MongoDB internal cluster endpoint on EKS"
+  value       = var.enable_mongodb && length(module.exec_mongodb) > 0 ? module.exec_mongodb[0].endpoint : null
+}
+
+output "exec_mongodb_secret_arn" {
+  description = "MongoDB secret ARN in AWS Secrets Manager"
+  value       = var.enable_mongodb && length(module.exec_mongodb) > 0 ? module.exec_mongodb[0].secret_arn : null
+}
+
+output "exec_mongodb_connection_uri" {
+  description = "MongoDB connection URI"
+  value       = var.enable_mongodb && length(module.exec_mongodb) > 0 ? module.exec_mongodb[0].connection_uri : null
+  sensitive   = true
+}
+
 output "resolved_vpc_id" {
   description = "Resolved VPC ID where databases reside"
   value       = local.resolved_vpc_id
