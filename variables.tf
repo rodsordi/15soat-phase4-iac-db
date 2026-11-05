@@ -60,6 +60,6 @@ variable "documentdb_instance_class" {
 
 variable "enable_documentdb" {
   type        = bool
-  description = "Flag to enable or disable DocumentDB provisioning"
-  default     = true
+  description = "Flag to enable or disable DocumentDB provisioning (disabled for AWS Academy compatibility)"
+  default     = false
 }
