@@ -63,3 +63,9 @@ variable "enable_documentdb" {
   description = "Flag to enable or disable DocumentDB provisioning (disabled for AWS Academy compatibility)"
   default     = false
 }
+
+variable "enable_mongodb" {
+  type        = bool
+  description = "Flag to enable or disable MongoDB provisioning on EKS"
+  default     = true
+}

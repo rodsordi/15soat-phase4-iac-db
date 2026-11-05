@@ -60,3 +60,13 @@ module "exec_db" {
   instance_class     = var.documentdb_instance_class
   environment        = var.environment
 }
+
+module "exec_mongodb" {
+  count  = var.enable_mongodb ? 1 : 0
+  source = "./modules/mongodb"
+
+  service_name  = "mongodb"
+  namespace     = "infra-database"
+  database_name = var.exec_db_name
+  environment   = var.environment
+}

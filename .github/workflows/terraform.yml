@@ -121,7 +121,7 @@ jobs:
           echo "- **Region**: ${{ env.AWS_REGION }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Work Order RDS**: $(terraform output -raw work_order_db_endpoint 2>/dev/null || echo 'Provisioned')" >> $GITHUB_STEP_SUMMARY
           echo "- **Billing RDS**: $(terraform output -raw billing_db_endpoint 2>/dev/null || echo 'Provisioned')" >> $GITHUB_STEP_SUMMARY
-          echo "- **Execution DocDB**: $(terraform output -raw exec_docdb_cluster_endpoint 2>/dev/null || echo 'N/A')" >> $GITHUB_STEP_SUMMARY
+          echo "- **Execution MongoDB (EKS)**: $(terraform output -raw exec_mongodb_endpoint 2>/dev/null || echo 'Provisioned')" >> $GITHUB_STEP_SUMMARY
 
       - name: Terraform Destroy
         id: destroy
