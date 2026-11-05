@@ -20,11 +20,20 @@ output "billing_db_secret_arn" {
 
 output "exec_docdb_cluster_endpoint" {
   description = "Workshop Execution DocumentDB/MongoDB cluster endpoint"
-  value       = module.exec_db.cluster_endpoint
+  value       = var.enable_documentdb && length(module.exec_db) > 0 ? module.exec_db[0].cluster_endpoint : null
 }
 
 output "exec_docdb_secret_arn" {
   description = "Workshop Execution DB secret ARN"
-  value       = module.exec_db.secret_arn
+  value       = var.enable_documentdb && length(module.exec_db) > 0 ? module.exec_db[0].secret_arn : null
 }
 
+output "resolved_vpc_id" {
+  description = "Resolved VPC ID where databases reside"
+  value       = local.resolved_vpc_id
+}
+
+output "resolved_database_subnet_ids" {
+  description = "Resolved Subnet IDs used for database subnets"
+  value       = local.resolved_subnet_ids
+}

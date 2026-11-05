@@ -10,14 +10,22 @@ variable "environment" {
   default     = "prd"
 }
 
+variable "cluster_name" {
+  type        = string
+  description = "EKS Cluster Name used for VPC and Subnet auto-discovery"
+  default     = "fiap-workshop-eks"
+}
+
 variable "vpc_id" {
   type        = string
-  description = "VPC ID where databases will reside"
+  description = "VPC ID where databases will reside (optional, auto-discovered if blank)"
+  default     = ""
 }
 
 variable "database_subnet_ids" {
   type        = list(string)
-  description = "Subnet IDs for DB subnet groups"
+  description = "Subnet IDs for DB subnet groups (optional, auto-discovered if blank)"
+  default     = []
 }
 
 variable "work_order_db_name" {
@@ -48,4 +56,10 @@ variable "documentdb_instance_class" {
   type        = string
   description = "DocumentDB instance class"
   default     = "db.t4g.medium"
+}
+
+variable "enable_documentdb" {
+  type        = bool
+  description = "Flag to enable or disable DocumentDB provisioning"
+  default     = true
 }
