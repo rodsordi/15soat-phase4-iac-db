@@ -1,7 +1,7 @@
 variable "aws_region" {
   type        = string
   description = "AWS region for database resources"
-  default     = "us-east-1"
+  default     = "us-east-2"
 }
 
 variable "environment" {
