@@ -52,6 +52,12 @@ variable "db_instance_class" {
   default     = "db.t4g.micro"
 }
 
+variable "postgres_engine_version" {
+  type        = string
+  description = "PostgreSQL engine version for RDS instances"
+  default     = "16.11"
+}
+
 variable "documentdb_instance_class" {
   type        = string
   description = "DocumentDB instance class"
