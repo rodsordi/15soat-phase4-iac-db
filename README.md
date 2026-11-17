@@ -7,9 +7,6 @@ Módulos Terraform para provisionamento de infraestrutura dedicada de bancos de 
 
 ## Arquitetura Global Database-per-Service & Fronteiras de Domínio
 
-<div style="overflow-x: auto; width: 100%;">
-<div style="min-width: 900px;">
-
 ```mermaid
 erDiagram
     %% Microservice: api-work-order (PostgreSQL - work_order_db)
@@ -125,8 +122,7 @@ erDiagram
     INVOICE ..> EXECUTION_ORDER : "PaymentConfirmedEvent (Kafka)"
 ```
 
-</div>
-</div>
+---
 
 ## Segurança e Gestão de Segredos
 - Todas as credenciais mestras são geradas dinamicamente via `random_password`.
