@@ -35,6 +35,7 @@ module "work_order_db" {
   vpc_id         = local.resolved_vpc_id
   subnet_ids     = local.resolved_subnet_ids
   instance_class = var.db_instance_class
+  engine_version = var.postgres_engine_version
   environment    = var.environment
 }
 
@@ -46,6 +47,7 @@ module "billing_db" {
   vpc_id         = local.resolved_vpc_id
   subnet_ids     = local.resolved_subnet_ids
   instance_class = var.db_instance_class
+  engine_version = var.postgres_engine_version
   environment    = var.environment
 }
 
