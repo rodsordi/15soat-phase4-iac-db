@@ -19,7 +19,7 @@ terraform {
   backend "s3" {
     bucket         = "fiap-phase4-terraform-state"
     key            = "iac-db/terraform.tfstate"
-    region         = "us-east-1"
+    region         = "us-east-2"
     dynamodb_table = "fiap-phase4-tf-lock"
     encrypt        = true
   }
@@ -41,12 +41,13 @@ data "aws_eks_cluster" "cluster" {
   name = var.cluster_name
 }
 
-data "aws_eks_cluster_auth" "cluster" {
-  name = var.cluster_name
-}
-
 provider "kubernetes" {
   host                   = data.aws_eks_cluster.cluster.endpoint
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.cluster.certificate_authority[0].data)
-  token                  = data.aws_eks_cluster_auth.cluster.token
+
+  exec {
+    api_version = "client.authentication.k8s.io/v1beta1"
+    command     = "aws"
+    args        = ["eks", "get-token", "--cluster-name", var.cluster_name, "--region", var.aws_region]
+  }
 }
